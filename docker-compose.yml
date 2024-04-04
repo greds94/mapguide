@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mapguide:
+    build: .
+    image: mg:4.0.0.9740
+    container_name: mapguide
+    volumes:
+      - "mapguide4:/usr/local/mapguideopensource-4.0.0/server/Repositories/Library"
+    ports: 
+      - "8008:8008"
+      - "8009:8009"
+
+volumes:
+  mapguide4:

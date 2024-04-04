@@ -23,7 +23,8 @@ RUN chmod +x mapguideopensource-4.0.0.9740-ubuntu16-install.run && apt-get updat
     --with-ogr --with-wfs \
     && apt-get install unzip -y \ 
     && mkdir /usr/share/fonts/truetype/msttcorefonts && unzip msttcorefonts.zip -d /usr/share/fonts/truetype/msttcorefonts \
-    && apt-get remove unzip -y
+    && apt-get remove unzip -y \
+    && apt-get install openjdk-8-jdk -y
 
 WORKDIR ${MG_PATH}
 
