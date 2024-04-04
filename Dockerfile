@@ -9,10 +9,13 @@ ENV MGAPACHE_LOG=${MG_PATH}/webserverextensions/apache2/logs
 ENV MGTOMCAT_LOG=${MG_PATH}/webserverextensions/tomcat/logs
 ENV ADMIN_USER=Administrator
 ENV ADMIN_PASSWORD=admin
+ENV URL_MAPGUIDE_RUN=http://download.osgeo.org/mapguide/releases/4.0.0/Preview2/mapguideopensource-4.0.0.9740-ubuntu16-install.run
 
 WORKDIR ${TEMPDIR}
 
 COPY utilities/ .
+RUN apt-get update && apt-get -y install wget \
+    && wget ${URL_MAPGUIDE_RUN}
 RUN chmod +x mapguideopensource-4.0.0.9740-ubuntu16-install.run && apt-get update \
     && ./mapguideopensource-4.0.0.9740-ubuntu16-install.run --noexec --nox11 --target . && apt-get update \
     && ./install-with-rdbms.sh --headless --with-rdbms --no-service-install --no-mgserver-start \
